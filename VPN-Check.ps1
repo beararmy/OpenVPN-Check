@@ -4,12 +4,13 @@
 
 ###### User Config ######
 
-$LogName = 'Application'    # This script will only work with built-in Log Names out of the box
-$LogSource = 'VPN-Check'    # Whatever You like the name of
-
-$EndNode = '10.1.0.1'       # Suggest remote VPN gateway
-$Attempts = 3               # Number of attempts before action is taken
-$WaitBetweenAttempts = 30   # Number of seconds between attempts
+param (
+    [string]$LogName = 'Application',     # This script will only work with built-in Log Names out of the box
+    [String]$LogSource = 'VPN-Check',     # Whatever You like the name of
+    [string]$EndNode = '10.1.0.1',        # Suggest remote VPN gateway
+    [Int32]$Attempts = '3',               # Number of attempts before action is taken
+    [Int32]$WaitBetweenAttempts = '30'    # Number of seconds between attempts
+ )
 
 ## End of User Config ##
 
@@ -48,7 +49,7 @@ Do {
     else {
         #Soft Fail
         Write-EventLog -LogName $LogName -Source $LogSource -EventId 1 -EntryType Warning -Message "VPN Down at attempt $Attempt, restarting service, will retry in 15s"
-        Restart-Service OpenVPNAccessClient
+        #Restart-Service OpenVPNAccessClient
         Start-Sleep $WaitBetweenAttempts
         $Attempt++
     }
