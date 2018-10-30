@@ -50,7 +50,7 @@ Do {
     else {
         #Soft Fail
         Write-EventLog -LogName $LogName -Source $LogSource -EventId 1 -EntryType Warning -Message "VPN Down at attempt $Attempt, restarting service, will retry in 15s"
-        #Restart-Service OpenVPNAccessClient
+        Restart-Service OpenVPNAccessClient
         Start-Sleep $WaitBetweenAttempts
         $Attempt++
     }

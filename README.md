@@ -12,3 +12,6 @@ Event ID's are;
 1       # Connection is down, we tried restarting the client and will try again $Attempts times
 9       # Connection is down and we've already tried to restart client
 ```
+
+In practice this is what you see in Event Viewer;
+![EventLog-Screenshot.PNG](https://raw.githubusercontent.com/beararmy/OpenVPN-Check/master/EventLog-Screenshot.PNG)
