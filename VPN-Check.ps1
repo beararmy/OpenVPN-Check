@@ -23,14 +23,15 @@ Catch {
         New-EventLog -Source $LogSource -LogName $LogName
         Write-EventLog -LogName $LogName -Source $LogSource -EventId 100 -EntryType Information -Message "$LogSource Log Source Installed" 
         Write-Output "$LogSource created in $LogName without issue"
+        Remove-Variable $log_check
     }
     catch {
         Write-Output "$LogSource could not be created in $LogName"
         Exit
     }
+    Remove-Variable $log_check
 }
 
-Remove-Variable $log_check
 $Connected = "Unknown"
 $Attempt = 1
 
